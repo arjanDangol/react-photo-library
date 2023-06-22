@@ -5,10 +5,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Navbar from "../components/Navbar";
 import ImageCard from "../components/ImageCard";
 import Spinner from "../components/Spinner";
-import { clearImages, changeSelectedImage } from "../store/reducers";
+import { clearImages, changeSelectedImage } from "../store";
 import { getSearchedImages } from "../store/reducers/getSearchedImages";
-import { UnsplashImages } from "../store/Types";
-import { useAppDispatch, useAppSelector } from "../store/reducers/hooks";
+import { UnsplashImages } from "../interface/Types";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 import ImageDetailModal from "../components/ImageDetailModal";
 
 export default function Search() {

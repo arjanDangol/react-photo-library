@@ -1,8 +1,8 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { InitialState, UnsplashImages } from "../Types";
-import { getUnsplashImages } from "./getUnsplashImages";
-import { getSearchedImages } from "./getSearchedImages";
-import { useAppSelector } from "../../store/reducers/hooks";
+import { InitialState, UnsplashImages } from "../interface/Types";
+import { getUnsplashImages } from "./reducers/getUnsplashImages";
+import { getSearchedImages } from "./reducers/getSearchedImages";
+import { useAppSelector } from "./hooks";
 
 const initialState: InitialState = {
   images: [],

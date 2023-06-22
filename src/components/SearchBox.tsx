@@ -1,11 +1,7 @@
 import React, { SyntheticEvent } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../store/reducers/hooks";
-import {
-  changeSearchTerm,
-  clearSearchTerm,
-  clearImages,
-} from "../store/reducers";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { changeSearchTerm, clearSearchTerm, clearImages } from "../store";
 import { XMarkIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { getSearchedImages } from "../store/reducers/getSearchedImages";
 
@@ -29,7 +25,7 @@ export default function SearchBox() {
   return (
     <>
       {/* Search area start */}
-      <div className="relative mt-2.5">
+      <div className="relative">
         <div className="absolute inset-y-0 left-2 flex items-center">
           <MagnifyingGlassIcon
             className="right-3 top-0 h-full w-5 text-gray-400 cursor-pointer"

@@ -1,4 +1,4 @@
-import { UnsplashImages } from "../store/Types";
+import { UnsplashImages } from "../interface/Types";
 import { format } from "date-fns";
 
 export default function ImageCard({

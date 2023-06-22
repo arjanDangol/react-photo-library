@@ -1,7 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { format } from "date-fns";
-import { UnsplashImages } from "../store/Types";
+import { UnsplashImages } from "../interface/Types";
 
 export default function ImageDetailModal({
   isOpen,

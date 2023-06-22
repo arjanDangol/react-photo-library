@@ -19,15 +19,16 @@ export default function Navbar() {
             <div className="flex -m-1.5 p-1.5 justify-center align-middle">
               <img
                 className="h-8 w-auto"
-                src="https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_4f2153ce7e0ebcddea8a5d6dc9787757/unsplash.png"
+                src="https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg?w=1380&t=st=1687472763~exp=1687473363~hmac=0f8eb2784a7e99c866c4bc53794a4f1cc20b6b7511af35c9846b7dc5caa97038"
                 alt=""
               />
-              <span className="hidden lg:flex align-middle justify-center text-lg font-bold">
+              <span className="hidden md:flex text-lg font-bold">
                 Photo Gallery App
               </span>
             </div>
           </Link>
         </div>
+
         <SearchBox />
         {/* Icon for mobile menu start */}
         <Bars3Icon

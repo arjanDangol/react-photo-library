@@ -1,4 +1,4 @@
-import { UnsplashImages } from "../store/Types";
+import { UnsplashImages } from "../interface/Types";
 
 export const parseData = async (items: any[]) => {
   try {

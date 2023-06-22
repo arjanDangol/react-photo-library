@@ -1,13 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../store/reducers/hooks";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Navbar from "../components/Navbar";
 import ImageCard from "../components/ImageCard";
 import Spinner from "../components/Spinner";
 import { getUnsplashImages } from "../store/reducers/getUnsplashImages";
-import { UnsplashImages } from "../store/Types";
-import { changeSelectedImage, clearImages } from "../store/reducers";
+import { UnsplashImages } from "../interface/Types";
+import { changeSelectedImage, clearImages } from "../store";
 import ImageDetailModal from "../components/ImageDetailModal";
 
 export default function Home() {

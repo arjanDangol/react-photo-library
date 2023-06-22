@@ -1,12 +1,23 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { InitialState } from "../Types";
+import { InitialState, UnsplashImages } from "../Types";
 import { getUnsplashImages } from "./getUnsplashImages";
 import { getSearchedImages } from "./getSearchedImages";
+import { useAppSelector } from "../../store/reducers/hooks";
 
 const initialState: InitialState = {
   images: [],
   searchTerm: "",
   pageNumber: "1",
+  selectedImage: {
+    id: "",
+    description: "",
+    url: "",
+    likes: 0,
+    userId: "",
+    username: "",
+    userFullName: "",
+    createdAt: 0,
+  },
 };
 
 const unsplashSplice = createSlice({
@@ -22,6 +33,14 @@ const unsplashSplice = createSlice({
     },
     clearSearchTerm: (state) => {
       state.searchTerm = "";
+    },
+    changeSelectedImage: (
+      state,
+      action: PayloadAction<{ id: string; images: UnsplashImages[] }>
+    ) => {
+      const selectedId = action.payload.id;
+      const imagesData = action.payload.images;
+      state.selectedImage = imagesData.filter((x) => x.id === selectedId)[0];
     },
   },
   extraReducers: (builder) => {
@@ -42,8 +61,12 @@ export const store = configureStore({
   },
 });
 
-export const { clearImages, changeSearchTerm, clearSearchTerm } =
-  unsplashSplice.actions;
+export const {
+  clearImages,
+  changeSearchTerm,
+  clearSearchTerm,
+  changeSelectedImage,
+} = unsplashSplice.actions;
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

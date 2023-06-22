@@ -1,7 +1,13 @@
 import { UnsplashImages } from "../store/Types";
 import { format } from "date-fns";
 
-export default function ImageCard({ data }: { data: UnsplashImages }) {
+export default function ImageCard({
+  data,
+  openImage,
+}: {
+  data: UnsplashImages;
+  openImage?: (id: string) => void;
+}) {
   return (
     <>
       <div className="p-5 rounded-3xl shadow-md bg-white">
@@ -9,7 +15,8 @@ export default function ImageCard({ data }: { data: UnsplashImages }) {
           <img
             src={data.url}
             alt={data.username}
-            className="h-52 object-fit object-cover w-full lg:h-80 rounded-3xl"
+            className="h-52 object-fit object-cover w-full lg:h-80 rounded-3xl cursor-pointer"
+            onClick={() => openImage(data.id)}
           />
 
           <div className="p-5 pb-0 flex flex-col md:flex-row items-start md:items-center justify-between">

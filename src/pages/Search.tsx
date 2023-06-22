@@ -1,20 +1,36 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Navbar from "../components/Navbar";
 import ImageCard from "../components/ImageCard";
 import Spinner from "../components/Spinner";
-import { clearImages } from "../store/reducers";
+import { clearImages, changeSelectedImage } from "../store/reducers";
 import { getSearchedImages } from "../store/reducers/getSearchedImages";
 import { UnsplashImages } from "../store/Types";
 import { useAppDispatch, useAppSelector } from "../store/reducers/hooks";
+import ImageDetailModal from "../components/ImageDetailModal";
 
 export default function Search() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const images = useAppSelector((state) => state.galleryApp.images);
   const searchTerm = useAppSelector((state) => state.galleryApp.searchTerm);
+  const selectedImage = useAppSelector(
+    (state) => state.galleryApp.selectedImage
+  );
+
+  const [isDetailOpen, setIsDetailOpen] = useState<boolean>(false);
+
+  const closeDetailModal = () => {
+    setIsDetailOpen(false);
+  };
+
+  const openDetailModal = (id: string) => {
+    const payloadData = { id, images };
+    dispatch(changeSelectedImage(payloadData));
+    setIsDetailOpen(true);
+  };
 
   useEffect(() => {
     dispatch(clearImages());
@@ -41,13 +57,22 @@ export default function Search() {
             >
               <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
                 {images.map((item: UnsplashImages) => (
-                  <ImageCard data={item} key={item.id} />
+                  <ImageCard
+                    data={item}
+                    key={item.id}
+                    openImage={openDetailModal}
+                  />
                 ))}
               </div>
             </InfiniteScroll>
           ) : (
             <Spinner />
           )}
+          <ImageDetailModal
+            isOpen={isDetailOpen}
+            closeModal={closeDetailModal}
+            data={selectedImage}
+          />
         </div>
       </div>
     </>

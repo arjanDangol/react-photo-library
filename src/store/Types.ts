@@ -2,6 +2,7 @@ export interface InitialState {
   images: UnsplashImages[];
   searchTerm: string;
   pageNumber: string | null;
+  selectedImage: UnsplashImages;
 }
 
 export interface UnsplashImages {

@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog } from "@headlessui/react";
 import {
   Bars3Icon,
   XMarkIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
+import { useAppDispatch, useAppSelector } from "./store/reducers/hooks";
+import { getUplplashImages } from "./store/reducers/getUpsplashImages";
 
 interface PhotoDataInterface {
   id: string;
@@ -12,6 +14,17 @@ interface PhotoDataInterface {
 }
 
 export default function Example() {
+  const dispatch = useAppDispatch();
+  const images = useAppSelector((state) => state.galleryApp.images);
+  const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
+  useEffect(() => {
+    if (!isImageLoaded) {
+      dispatch(getUplplashImages(false));
+      setIsImageLoaded(true);
+    }
+    console.log("Images: ", images);
+  }, [images]);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const photoData = [
     {

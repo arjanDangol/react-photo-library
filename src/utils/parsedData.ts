@@ -1,8 +1,8 @@
-import { UpsplashImages } from "../store/Types";
+import { UnsplashImages } from "../store/Types";
 
 export const parseData = async (items: any[]) => {
   try {
-    const parsedData: UpsplashImages[] = [];
+    const parsedData: UnsplashImages[] = [];
     items.forEach(
       (item: {
         id: string;
@@ -17,7 +17,7 @@ export const parseData = async (items: any[]) => {
       }) => {
         parsedData.push({
           id: item.id,
-          description: item.description,
+          description: item.description ? item.description : "No description",
           url: item.urls.small,
           likes: item.likes,
           userId: item.user.id,

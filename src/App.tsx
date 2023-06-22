@@ -6,7 +6,8 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import { useAppDispatch, useAppSelector } from "./store/reducers/hooks";
-import { getUplplashImages } from "./store/reducers/getUpsplashImages";
+import { getUnsplashImages } from "./store/reducers/getUnsplashImages";
+import { UnsplashImages } from "./store/Types";
 
 interface PhotoDataInterface {
   id: string;
@@ -170,12 +171,12 @@ export default function Example() {
         <div className="py-16 sm:py-24 lg:py-32">
           {/* Photo gallery grid area start */}
           <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
-            {photoData.map((item: PhotoDataInterface) => (
+            {images.map((item: UnsplashImages) => (
               <div
                 key={item.id}
                 className="flex justify-center align-middle h-32"
               >
-                <img className="w-auto" src={item.imgUrl} alt="" />
+                <img className="w-auto" src={item.url} alt={item.username} />
               </div>
             ))}
           </div>

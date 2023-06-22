@@ -1,9 +1,9 @@
 export interface InitialState {
-  images: UpsplashImages[];
+  images: UnsplashImages[];
   searchTerm: string;
 }
 
-export interface UpsplashImages {
+export interface UnsplashImages {
   id: string;
   description: string;
   url: string;

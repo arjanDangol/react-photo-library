@@ -1,18 +1,18 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { InitialState } from "../Types";
-import { getUplplashImages } from "./getUpsplashImages";
+import { getUnsplashImages } from "./getUnsplashImages";
 
 const initialState: InitialState = {
   images: [],
   searchTerm: "",
 };
 
-const upsplashSlice = createSlice({
+const unsplashSplice = createSlice({
   name: "galleryApp",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getUplplashImages.fulfilled, (state, action) => {
+    builder.addCase(getUnsplashImages.fulfilled, (state, action) => {
       state.images = action.payload.parsedData;
     });
   },
@@ -20,7 +20,7 @@ const upsplashSlice = createSlice({
 
 export const store = configureStore({
   reducer: {
-    galleryApp: upsplashSlice.reducer,
+    galleryApp: unsplashSplice.reducer,
   },
 });
 

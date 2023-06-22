@@ -7,6 +7,7 @@ import {
   clearImages,
 } from "../store/reducers";
 import { XMarkIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { getSearchedImages } from "../store/reducers/getSearchedImages";
 
 export default function SearchBox() {
   const location = useLocation();
@@ -17,7 +18,7 @@ export default function SearchBox() {
     if (location.pathname !== "/search") navigate("/search");
     else {
       dispatch(clearImages());
-      //   dispatch(getSearchPageImages(false));
+      dispatch(getSearchedImages());
     }
   };
   return (

@@ -8,13 +8,14 @@ import Spinner from "../components/Spinner";
 import { getUnsplashImages } from "../store/reducers/getUnsplashImages";
 import { UnsplashImages } from "../store/Types";
 import { clearImages } from "../store/reducers";
+
 export default function Home() {
   const dispatch = useAppDispatch();
   const images = useAppSelector((state) => state.galleryApp.images);
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
   useEffect(() => {
     if (!isImageLoaded) {
-      dispatch(getUnsplashImages(false));
+      dispatch(getUnsplashImages());
       setIsImageLoaded(true);
     }
     console.log("Images: ", images);
@@ -35,7 +36,7 @@ export default function Home() {
           {images.length ? (
             <InfiniteScroll
               dataLength={images.length}
-              next={() => dispatch(getUnsplashImages(true))}
+              next={() => dispatch(getUnsplashImages())}
               hasMore={images.length < 60}
               loader={<Spinner />}
               height={550}

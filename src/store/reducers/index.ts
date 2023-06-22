@@ -1,6 +1,7 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { InitialState } from "../Types";
 import { getUnsplashImages } from "./getUnsplashImages";
+import { getSearchedImages } from "./getSearchedImages";
 
 const initialState: InitialState = {
   images: [],
@@ -25,6 +26,10 @@ const unsplashSplice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getUnsplashImages.fulfilled, (state, action) => {
+      state.images = action.payload.parsedData;
+      state.pageNumber += 1;
+    });
+    builder.addCase(getSearchedImages.fulfilled, (state, action) => {
       state.images = action.payload.parsedData;
       state.pageNumber += 1;
     });

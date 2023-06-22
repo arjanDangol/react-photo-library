@@ -11,7 +11,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-## Setup of the project
+## Detail of the project
 
 ### Installation of libraries
 
@@ -48,3 +48,9 @@ This project is bootstraped with the following libraries:
 ### Version Control
 
 Version control has been implemented using Git.
+
+
+### References
+I have taken refernece from the below sites to complete the project:
+1. https://github.com/koolkishan/react-youtube-clone (koolkishan)
+2. https://medium.com/front-end-weekly/react-web-app-with-typescript-and-redux-a-guide-for-a-quick-start-9d9fb7309c8

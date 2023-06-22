@@ -8,11 +8,7 @@ import {
 import { useAppDispatch, useAppSelector } from "./store/reducers/hooks";
 import { getUnsplashImages } from "./store/reducers/getUnsplashImages";
 import { UnsplashImages } from "./store/Types";
-
-interface PhotoDataInterface {
-  id: string;
-  imgUrl: string;
-}
+import ImageCard from "./components/ImageCard";
 
 export default function Example() {
   const dispatch = useAppDispatch();
@@ -20,45 +16,14 @@ export default function Example() {
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
   useEffect(() => {
     if (!isImageLoaded) {
-      dispatch(getUplplashImages(false));
+      dispatch(getUnsplashImages(false));
       setIsImageLoaded(true);
     }
     console.log("Images: ", images);
   }, [images]);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const photoData = [
-    {
-      id: "1",
-      imgUrl:
-        "https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_4f2153ce7e0ebcddea8a5d6dc9787757/unsplash.png",
-    },
-    {
-      id: "2",
-      imgUrl:
-        "https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_4f2153ce7e0ebcddea8a5d6dc9787757/unsplash.png",
-    },
-    {
-      id: "3",
-      imgUrl:
-        "https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_4f2153ce7e0ebcddea8a5d6dc9787757/unsplash.png",
-    },
-    {
-      id: "4",
-      imgUrl:
-        "https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_4f2153ce7e0ebcddea8a5d6dc9787757/unsplash.png",
-    },
-    {
-      id: "5",
-      imgUrl:
-        "https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_4f2153ce7e0ebcddea8a5d6dc9787757/unsplash.png",
-    },
-    {
-      id: "6",
-      imgUrl:
-        "https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_4f2153ce7e0ebcddea8a5d6dc9787757/unsplash.png",
-    },
-  ];
+
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
@@ -172,13 +137,16 @@ export default function Example() {
           {/* Photo gallery grid area start */}
           <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
             {images.map((item: UnsplashImages) => (
+              <ImageCard data={item} key={item.id} />
+            ))}
+            {/* {images.map((item: UnsplashImages) => (
               <div
                 key={item.id}
                 className="flex justify-center align-middle h-32"
               >
                 <img className="w-auto" src={item.url} alt={item.username} />
               </div>
-            ))}
+            ))} */}
           </div>
           {/* Photo gallery grid area end */}
         </div>

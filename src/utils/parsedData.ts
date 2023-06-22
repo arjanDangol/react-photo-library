@@ -9,6 +9,7 @@ export const parseData = async (items: any[]) => {
         description: string;
         urls: { small: string };
         likes: number;
+        created_at: number;
         user: {
           id: string;
           username: string;
@@ -23,6 +24,7 @@ export const parseData = async (items: any[]) => {
           userId: item.user.id,
           username: item.user.username,
           userFullName: item.user.name,
+          createdAt: item.created_at,
         });
       }
     );

@@ -11,4 +11,5 @@ export interface UnsplashImages {
   userId: string;
   username: string;
   userFullName: string;
+  createdAt: number;
 }
